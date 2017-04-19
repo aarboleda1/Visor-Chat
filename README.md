@@ -1,7 +1,8 @@
 # Visor-Chat
 > A chat client serving as a gateway into the ultimate experience in financial advisory 
-
 ## Installation
+> Note: Both need to be running in order for the app to work.
+
 _install and configure api_
 1. `$ git clone https://github.com/aarboleda1/Visor-Chat.git`
 2. `$ cd ./Visor-Chat`
