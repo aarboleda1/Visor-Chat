@@ -1,5 +1,6 @@
 # Visor-Chat
 > A chat client serving as a gateway into the ultimate experience in financial advisory 
+
 View a high-level [architecture diagram](https://www.draw.io/#Haarboleda1%2FMessage-System%2Fmaster%2FMessaging-System.xml) here.
 ## Installation
 > Note: Both need to be running in order for the app to work.
