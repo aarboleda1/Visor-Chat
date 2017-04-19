@@ -1,8 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // This component displays an individual message.
-// We should have logic to display it on the right if the user sent the
-// message, or on the left if it was received from someone else.
 class Message extends React.Component {
   componentDidUpdate() {
     // get the messagelist container and set the scrollTop to the height of the container
@@ -28,6 +27,10 @@ class Message extends React.Component {
 }
 
 Message.defaultProps = {
+};
+
+Message.propTypes = {
+  message: PropTypes.string.isRequired
 };
 
 export default Message;

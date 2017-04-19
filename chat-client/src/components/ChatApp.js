@@ -20,7 +20,6 @@ class ChatApp extends React.Component {
 
     // Listen for messages from the server
     this.socket.on('server:message', message => {
-      console.log(message);
       this.addMessage(message);
     });
     
@@ -40,7 +39,6 @@ class ChatApp extends React.Component {
   }
 
   addMessage(message) {
-    // Append the message to the component state
     let messages = this.state.messages;
     messages = messages.concat(message);
     this.setState({ messages });
@@ -49,7 +47,9 @@ class ChatApp extends React.Component {
   render() {
     return (
       <div className="container">
-        <h3>Visor Chat App</h3>
+        <div>
+        <h3>Coversations with Visor</h3>
+        </div>
         <Messages messages={this.state.messages} />
         <ChatInput onSend={this.sendHandler} />
       </div>
