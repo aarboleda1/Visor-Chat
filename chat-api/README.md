@@ -1,5 +1,6 @@
-#Simple Chat API
-A simple chat API for the coderfactory blog article
+# Chat API
+> This is the chat application API containing all serverside. Featuring socket.io for fast bidirectional communication
+
 
 Start the API by running:
 ```
