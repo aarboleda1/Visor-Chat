@@ -1,3 +1,0 @@
-/*
-  Helper methods to perform logic handleIntent logic
-*/

@@ -32,8 +32,10 @@ _install and configure front-end client_
 - [ ] Implement a list of different rooms. A new 'room' should appear every time a client logs into the application. 
     - They should be able to view past conversations had with previous employees or chatbot
 
+
 **Backend**
 - [ ] Incorporate Natural Language Processor to act as gateway into application
-
+- [ ] Store users conversations for data persistence in a database
+- [ ] Improve functionality of chat bot. Basic functionality works right now
 ## Architecture
 ![Architecture](/misc/architecture.png?raw=true "Optional Title")
