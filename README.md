@@ -21,9 +21,9 @@ _install and configure front-end client_
 
 
 ## Getting Started
-+ This repository is broken down into 2 a backend and front end repository
++ This repository is broken down into backend and front end repository
 + Both need to be running in order for the app to work
-+ 
+
 
 
 ## To do 
@@ -35,3 +35,6 @@ _install and configure front-end client_
 
 **Backend**
 - [ ] Incorporate Natural Language Processor to act as gateway into application
+
+
+![Architecture](/misc/architecture.png?raw=true "Optional Title")
