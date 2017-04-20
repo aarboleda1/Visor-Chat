@@ -35,5 +35,5 @@ _install and configure front-end client_
 **Backend**
 - [ ] Incorporate Natural Language Processor to act as gateway into application
 
-**Architecture**
+## Architecture
 ![Architecture](/misc/architecture.png?raw=true "Optional Title")
