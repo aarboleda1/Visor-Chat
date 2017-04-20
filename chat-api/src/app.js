@@ -1,13 +1,20 @@
-import http from 'http';
-import express from 'express';
-import cors from 'cors';
-import io from 'socket.io';
-import config from '../config/config.json';
-import path from 'path';
+// import http from 'http';
+const http = require('http');
+const express = require('express');
+const cors = require('cors');
+const io = require('socket.io');
+const config = require('../config/config.json');
+const path = require('path');
 
 // setup server
 const app = express();
 const server = http.createServer(app);
+
+const {Wit, log} = require('node-wit');
+const interactive = require('node-wit').interactive;
+const WIT_TOKEN = 'XC4GXNONRRY6GD2FZTPDEA6A2H6GTUTW';
+
+const chatBotClient = new Wit({ accessToken: WIT_TOKEN });
 
 const socketIo = io(server);
 
@@ -24,12 +31,22 @@ console.log(`Started on port ${config.port}`);
 
 // Setup socket.io
 socketIo.on('connection', socket => {
-  socket.broadcast.emit('server:message', { message: 'can you hear me? abc' });
   const username = socket.handshake.query.username;
   
   socket.on('client:message', data => {
-    // message received from client, now broadcast it to everyone else
-    // socket.broadcast.emit('server:message', data);
+    chatBotClient.message(data.message)
+      .then((res) => {
+        console.log(res);
+        const { confidence, value } = res.entities.intent[0];
+        if (confidence > 0.5 && value === 'greeting') {
+          socket.emit('server:message', { username: 'Anton', message: 'yo' });
+        } else if (confidence > 0.5 && value === 'taxes') {
+          socket.emit('server:message', { username: 'Anton', message: 'taxes' });          
+        } else if (res.entities.intent[0] === undefined) {
+          socket.emit('server:message', { username: 'Anton', message: `I didn't quite catch that, I've forwarded your message to our associates and we will be with you shortly` });                    
+        }
+      })
+    .catch(console.error);
   });
 
   socket.on('disconnect', () => {
@@ -37,4 +54,4 @@ socketIo.on('connection', socket => {
   });
 });
 
-export default app;
+module.exports = app;
