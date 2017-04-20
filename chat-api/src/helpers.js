@@ -9,11 +9,11 @@ const handleIntent = (res) => {
   const { confidence, value } = res.entities.intent[0] || null;
   switch (confidence && value) {
     case confidence > 0.5 && 'greeting':
-      return 'hello';
+      return 'Hello! how can I help you today?';
     case confidence > 0.5 && 'taxes':
       //do some tax stuff logic
       //call 3rd party Tax API for logic 
-      return 'taxes are due soon!';
+      return 'To better understand your situation, I see that you make $100,000 this year';
     case confidence > 0.5 && 'unknown':
       return "Hmmm I don't know the answer to that'";
     default:
