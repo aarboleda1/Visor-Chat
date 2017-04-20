@@ -1,7 +1,6 @@
 # Visor-Chat
 > A chat client serving as a gateway into the ultimate experience in financial advisory 
 
-View a high-level [architecture diagram](https://www.draw.io/?client=1&title=Copy%20of%20Messaging-System.xml) here.
 ## Installation
 > Note: Both need to be running in order for the app to work.
 
@@ -36,5 +35,5 @@ _install and configure front-end client_
 **Backend**
 - [ ] Incorporate Natural Language Processor to act as gateway into application
 
-
+**Architecture**
 ![Architecture](/misc/architecture.png?raw=true "Optional Title")
