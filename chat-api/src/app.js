@@ -10,11 +10,14 @@ const path = require('path');
 const app = express();
 const server = http.createServer(app);
 
-const {Wit, log} = require('node-wit');
+// Setup wit.ai chatBotClient
+const { Wit } = require('node-wit');
 const interactive = require('node-wit').interactive;
 const WIT_TOKEN = 'XC4GXNONRRY6GD2FZTPDEA6A2H6GTUTW';
-
+interactive(Wit);
 const chatBotClient = new Wit({ accessToken: WIT_TOKEN });
+
+const { handleIntent } = require('./helpers.js'); // hanldes intent of the user
 
 const socketIo = io(server);
 
@@ -32,19 +35,10 @@ console.log(`Started on port ${config.port}`);
 // Setup socket.io
 socketIo.on('connection', socket => {
   const username = socket.handshake.query.username;
-  
   socket.on('client:message', data => {
     chatBotClient.message(data.message)
       .then((res) => {
-        console.log(res);
-        const { confidence, value } = res.entities.intent[0];
-        if (confidence > 0.5 && value === 'greeting') {
-          socket.emit('server:message', { username: 'Anton', message: 'yo' });
-        } else if (confidence > 0.5 && value === 'taxes') {
-          socket.emit('server:message', { username: 'Anton', message: 'taxes' });          
-        } else if (res.entities.intent[0] === undefined) {
-          socket.emit('server:message', { username: 'Anton', message: `I didn't quite catch that, I've forwarded your message to our associates and we will be with you shortly` });                    
-        }
+        socket.emit('server:message', { username: 'Anton', message: handleIntent(res) });
       })
     .catch(console.error);
   });
