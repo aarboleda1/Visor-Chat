@@ -42,7 +42,7 @@ _install and configure front-end client_
 **Backend**
 - [x] Incorporate Natural Language Processor to act as gateway into application
 - [ ] Store users conversations for data persistence in a database
-- [ ] Improve functionality of chat bot. Basic functionality works right now
+- [ ] Improve functionality of chat bot. So that when a user asks a specific question, we query a 3rd party API to get certain information
 
 ## Architecture
 ![Architecture](/misc/architecture.png?raw=true "Optional Title")
